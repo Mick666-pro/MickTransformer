@@ -1,0 +1,131 @@
+# Task B — Transformer Training Dynamics
+
+## 1. Research Question
+
+Does a longer context length help my Transformer predict the next character more accurately?
+
+I want to investigate how context length affects learning, training loss, and validation loss at different stages of training.
+
+I will compare context lengths of 4 and 12 tokens.
+
+## 2. Hypothesis
+
+**Proposed hypothesis — confirm or change before running the experiment:**
+
+I predict that a context length of 12 tokens will produce lower validation loss than a context length of 4 tokens, especially after more training steps.
+
+However, a longer context may not always be better.
+
+## 3. Why I Think This
+
+My reasoning is that a longer context gives the Transformer more information about previous characters.
+
+For example, if the model sees more of a sentence, it may have additional clues about which character should come next.
+
+However, longer context also increases the amount of computation required by Attention.
+
+I don't know whether having more information will actually improve the model's predictions on my dataset.
+
+That is what I want to test.
+
+## 4. Controlled Experiments
+
+I will compare two experimental conditions.
+
+| Setting | Experiment A | Experiment B |
+|---|---|---|
+| Context Length | 4 tokens | 12 tokens |
+| Embedding Size | 16 | 16 |
+| Attention Heads | 1 | 1 |
+| Learning Rate | 0.01 | 0.01 |
+| Training Steps | 120 | 120 |
+| Batch Size | 32 | 32 |
+| Random Seeds | 42, 43 | 42, 43 |
+| Optimizer | Adam | Adam |
+
+I will keep the model's parameter count, data, training positions, and other settings consistent.
+
+**Independent variable:** Context length.
+
+**Dependent variables:** Validation loss and training loss.
+
+I will compare the models at different training stages, not just at the final step.
+
+I will also use validation examples that are separate from training examples. I need to check that repeated text does not make the validation task too easy.
+
+### Experiment Procedure
+
+1. Prepare training and validation data.
+2. Initialize the models using matched random seeds.
+3. Train both context-length conditions.
+4. Record training loss during training.
+5. Measure validation loss using the same target positions.
+6. Repeat with another random seed.
+7. Compare the results and investigate differences.
+
+## 5. Results
+
+**Status: Experiments not yet measured.**
+
+| Seed | Context Length | Validation Loss |
+|---|---|---|
+| 42 | 4 | Pending |
+| 42 | 12 | Pending |
+| 43 | 4 | Pending |
+| 43 | 12 | Pending |
+
+I will also record loss at different training steps to investigate whether the effect of context length changes during training.
+
+I will use the actual measurements to determine whether my hypothesis is supported.
+
+## 6. Unexpected Results and Debugging
+
+**Status: Waiting for experiment results.**
+
+If the results disagree with my hypothesis, I will investigate three possible causes:
+
+**Measurement:** Is the validation loss calculated correctly? Are both models evaluated on comparable targets?
+
+**Experiment design:** Did I accidentally change another variable? Is the dataset too small or repetitive?
+
+**Hypothesis:** Could longer context simply be unnecessary for this prediction task?
+
+I will document any real problems I encounter, including how I investigate and resolve them.
+
+## 7. Conclusion
+
+**Not determined yet.**
+
+After running the experiments, I will explain:
+
+- Which context length achieved lower validation loss.
+- Whether the result was consistent across random seeds.
+- Whether the difference changed during training.
+- Whether the evidence supports or contradicts my hypothesis.
+- What limitations prevent me from making a stronger conclusion.
+
+I will not claim that longer context is always better based on this small experiment.
+
+## 8. What I Still Don't Know
+
+There are several questions I still want to investigate.
+
+Does longer context help because it provides useful information, or does it sometimes add unnecessary information?
+
+Would the results change with a larger and more diverse dataset?
+
+Would the same conclusions apply to larger Transformers?
+
+I also don't know how much of the model's performance comes from learning general patterns rather than memorizing repeated examples.
+
+These questions could guide future experiments.
+
+---
+
+## Research Status
+
+**Task A:** Transformer implementation, training, text generation, and inference benchmark completed.
+
+**Task B:** Research question and experimental design drafted. Controlled experiments, analysis, and final conclusions are still pending.
+
+**Author:** Mick Zhang
